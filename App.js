@@ -5,7 +5,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={{margin:50}}>Hello World!!!!</Text>
-      <Button title='Click'/>
+      <Button title='Click Me'/>
     </View>
   );
 }
