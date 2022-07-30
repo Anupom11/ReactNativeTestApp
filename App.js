@@ -1,16 +1,18 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View, Button, TextInput, ScrollView, FlatList} from 'react-native';
 
+import GoalInput from './components/GoalInput';
+import GoalItem from './components/GoalItem';
+
 export default function App() {
-  const [userInputVal, setUserInputVal] = useState('');
+  //const [userInputVal, setUserInputVal] = useState('');
   const [courseGoals, setCourseGoals] = useState([]);
 
-  function getTextInputData(textData) {
+  /* function getTextInputData(textData) {
     setUserInputVal(textData);
-  }
+  } */
 
-  function addUserInput() {
-    //console.log("Val::"+userInputVal);
+  function addUserInput(userInputVal) {
     setCourseGoals(currentCourseGoals => [...currentCourseGoals, userInputVal]);
   }
 
@@ -26,16 +28,18 @@ export default function App() {
         <Button title="Click Me" onPress={clickMeResponse} />
       </View>
 
-      <View style={styles.inputContainer}>
+      <GoalInput addUserInput={addUserInput}/>
+      <GoalItem courseGoals={courseGoals} />
+
+      {/* <View style={styles.inputContainer}>
         <View style={{borderColor: '#000000', borderWidth: 1, marginEnd: 10}}>
           <TextInput
             placeholder="Your course goal!"
-            onChangeText={getTextInputData}
-          />
+            onChangeText={getTextInputData}/>
         </View>
 
         <Button title="Add Goal" onPress={addUserInput} />
-      </View>
+      </View> */}
 
       {/* <View style={{marginBottom: 20}}>
         <ScrollView>
@@ -49,7 +53,7 @@ export default function App() {
         </ScrollView>
       </View> */}
 
-      <View style={{marginBottom: 20}}>
+      {/* <View style={{marginBottom: 20}}>
         <FlatList
           data={courseGoals}
           keyExtractor={(item, index)=> index.toString()}
@@ -60,8 +64,7 @@ export default function App() {
               </View>
             );
           }}  />
-      </View>
-
+      </View> */}
 
     </View>
   );
