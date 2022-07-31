@@ -16,6 +16,10 @@ export default function App() {
     setCourseGoals(currentCourseGoals => [...currentCourseGoals, userInputVal]);
   }
 
+  function deleteItem(item) {
+    alert("Selected:"+item);
+  }
+
   function clickMeResponse() {
     alert('Click me!');
   }
@@ -29,7 +33,7 @@ export default function App() {
       </View>
 
       <GoalInput addUserInput={addUserInput}/>
-      <GoalItem courseGoals={courseGoals} />
+      <GoalItem courseGoals={courseGoals} deleteItem={deleteItem} />
 
       {/* <View style={styles.inputContainer}>
         <View style={{borderColor: '#000000', borderWidth: 1, marginEnd: 10}}>
