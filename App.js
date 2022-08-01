@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, Button, TextInput, ScrollView, FlatList} from 'react-native';
+import {StyleSheet, Text, View, Button, TextInput, ScrollView, FlatList, Alert} from 'react-native';
 
 import GoalInput from './components/GoalInput';
 import GoalItem from './components/GoalItem';
@@ -17,7 +17,20 @@ export default function App() {
   }
 
   function deleteItem(item) {
-    alert("Selected:"+item);
+    Alert.alert('Confirm!', 'Are you sure? You want to delete '+item, [
+      {
+        text: 'Cancel',
+        onPress:()=> null,
+        style: 'cancel'
+      },
+      {
+        tex: 'Yes',
+        onPress:()=>{
+          setCourseGoals(currentCourseGoals=> { return currentCourseGoals.filter((goal)=> goal!=item);  });
+        }
+      }
+    ]);
+    
   }
 
   function clickMeResponse() {
