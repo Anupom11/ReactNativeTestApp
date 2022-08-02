@@ -22,7 +22,7 @@ function GoalInput(props) {
         <Modal
             visible={props.visibility}
             animationType={'slide'}>
-            <View>
+            <View style={{margin:10, paddingBottom:10, backgroundColor:'#e1e8e3'}}>
                 <View style={styles.inputContainer}>
                     <View style={{borderColor: '#000000', borderWidth: 1, marginEnd: 10}}>
                         <TextInput
