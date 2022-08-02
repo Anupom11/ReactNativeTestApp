@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, StyleSheet, TextInput, Button } from "react-native";
+import { View, StyleSheet, TextInput, Button, Modal } from "react-native";
 
 function GoalInput(props) {
 
@@ -14,17 +14,29 @@ function GoalInput(props) {
         setUserInputVal('');
     }
 
-    return (
-        <View style={styles.inputContainer}>
-            <View style={{borderColor: '#000000', borderWidth: 1, marginEnd: 10}}>
-                <TextInput
-                    placeholder="Your course goal!"
-                    onChangeText={getTextInputData}
-                    value={userInputVal} />
-            </View>
+    function closeModal() {
+        props.closeVisibility();
+    }
 
-            <Button title="Add Goal" onPress={addGoalHandler} />
-        </View>
+    return (
+        <Modal
+            visible={props.visibility}
+            animationType={'slide'}>
+            <View>
+                <View style={styles.inputContainer}>
+                    <View style={{borderColor: '#000000', borderWidth: 1, marginEnd: 10}}>
+                        <TextInput
+                            placeholder="Your course goal!"
+                            onChangeText={getTextInputData}
+                            value={userInputVal} />
+                    </View>
+                    <Button title="Add Goal" onPress={addGoalHandler} />
+                </View>
+                <View style={{marginTop:10, marginLeft:20, marginRight:20}}>
+                    <Button title="Close" onPress={closeModal}/>
+                </View>
+            </View>
+        </Modal>
     );
 }
 
@@ -35,5 +47,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding: 5,
         justifyContent: 'flex-start',
+        marginTop:10, 
+        marginLeft:20,
       },
 });

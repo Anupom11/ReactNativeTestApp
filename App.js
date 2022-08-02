@@ -6,7 +6,8 @@ import GoalItem from './components/GoalItem';
 
 export default function App() {
   //const [userInputVal, setUserInputVal] = useState('');
-  const [courseGoals, setCourseGoals] = useState([]);
+  const [courseGoals, setCourseGoals]       = useState([]);
+  const [showInputModal, setShowInputModal] = useState(false);
 
   /* function getTextInputData(textData) {
     setUserInputVal(textData);
@@ -37,6 +38,14 @@ export default function App() {
     alert('Click me!');
   }
 
+  function showItemSheet() {
+    setShowInputModal(true);
+  }
+
+  function closeItemSheet() {
+    setShowInputModal(false);
+  }
+
   return (
     <View style={styles.appContainer}>
 
@@ -45,7 +54,11 @@ export default function App() {
         <Button title="Click Me" onPress={clickMeResponse} />
       </View>
 
-      <GoalInput addUserInput={addUserInput}/>
+      <View style={{marginTop:10}}>
+        <Button title="Add Item" onPress={showItemSheet} />
+      </View>
+
+      <GoalInput visibility={showInputModal} closeVisibility={closeItemSheet} addUserInput={addUserInput}/>
       <GoalItem courseGoals={courseGoals} deleteItem={deleteItem} />
 
       {/* <View style={styles.inputContainer}>
